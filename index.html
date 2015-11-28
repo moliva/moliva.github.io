@@ -15,14 +15,35 @@
 		   text-align:center;
 		   font-family: "Helvetica Neue", Helvetica;
 		}
+		.cookie {
+			width: 50px;
+		}
+		.centered {
+			display: block;
+			margin-right: auto;
+			margin-left: auto;
+		}
+		.hidden {
+			visibility: hidden;
+		}
 	</style>
 </head>
 <body>
 	<div class="container1">
 	    <div class="vertical-center-row">
-	        <img src="cookie.jpg" alt="" title="Welcome!" ></img>
-		<h1>Welcome!</h1>
+	        <a href="#"><img class="centered" id="cookie" src="cookie.png" alt="" title="Welcome!" ></img></a>
+					<h1>Welcome!</h1>
+					<img src="cookie-cokkie.png" alt="" class="cookie centered hidden" />
 	    </div>
 	</div>
 </body>
+<script src="https://code.jquery.com/jquery-2.1.4.min.js" charset="utf-8"></script>
+<script type="text/javascript">
+	$(function() {
+		$('#cookie').on('click', function() {
+			var cookie = $('.cookie');
+			cookie.css('visibility', cookie.css('visibility') == 'hidden' ? 'visible' : 'hidden');
+		});
+	})
+</script>
 </html>
