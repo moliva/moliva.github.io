@@ -26,24 +26,71 @@
 		.hidden {
 			visibility: hidden;
 		}
+		a {
+			text-decoration: none;
+		}
+		a:visited {
+			color: black;
+		}
 	</style>
 </head>
 <body>
 	<div class="container1">
 	    <div class="vertical-center-row">
 	        <a href="#"><img class="centered" id="cookie" src="cookie.png" alt="" title="Welcome!" ></img></a>
-					<h1>Welcome!</h1>
+					<a href="#"><h1 id="welcome">Welcome!</h1></a>
 					<img src="cookie-cokkie.png" alt="" class="cookie centered hidden" />
 	    </div>
 	</div>
 </body>
 <script src="https://code.jquery.com/jquery-2.1.4.min.js" charset="utf-8"></script>
 <script type="text/javascript">
+	var languages = [
+		{
+			name: "english",
+			welcomeMessage: "Wecome!"
+		},
+		{
+			name: "spanish",
+			welcomeMessage: "¡Bienvenido!"
+		},
+		{
+			name: "french",
+			welcomeMessage: "Bienvenue !"
+		}];
+
+	var state = {
+		language: languages[0]
+	};
+
 	$(function() {
 		$('#cookie').on('click', function() {
+			// change side
 			var cookie = $('.cookie');
 			cookie.css('visibility', cookie.css('visibility') == 'hidden' ? 'visible' : 'hidden');
 		});
-	})
+		$('#welcome').on('click', function () {
+			// change language
+			state.language = nextLanguage(state.language);
+
+			updateLanguage();
+		});
+	});
+
+	function nextLanguage(current) {
+		var name = current.name;
+		if (name == "english") {
+			return languages[1];
+		} else if (name == "spanish") {
+			return languages[2];
+		} else if (name == "french") {
+			return languages[0];
+		}
+	}
+
+	function updateLanguage() {
+		var language = state.language;
+		$('#welcome').html(language.welcomeMessage);
+	}
 </script>
 </html>
