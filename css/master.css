@@ -1,0 +1,31 @@
+.container1 {
+   height: 100%;
+   display: table;
+   margin-right: auto;
+   margin-left: auto;
+}
+.vertical-center-row {
+   display: table-cell;
+   vertical-align: middle;
+}
+h1 {
+   text-align:center;
+   font-family: "Helvetica Neue", Helvetica;
+}
+.cookie {
+  width: 50px;
+}
+.centered {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+.hidden {
+  visibility: hidden;
+}
+a {
+  text-decoration: none;
+}
+a:visited {
+  color: black;
+}

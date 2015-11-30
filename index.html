@@ -1,54 +1,49 @@
 <html>
 <head>
-	<style type="text/css">
-		.container1 {
-		   height: 100%;
-		   display: table;
-		   margin-right: auto;
-		   margin-left: auto;
-		}
-		.vertical-center-row {
-		   display: table-cell;
-		   vertical-align: middle;
-		}
-		h1 {
-		   text-align:center;
-		   font-family: "Helvetica Neue", Helvetica;
-		}
-		.cookie {
-			width: 50px;
-		}
-		.centered {
-			display: block;
-			margin-right: auto;
-			margin-left: auto;
-		}
-		.hidden {
-			visibility: hidden;
-		}
-		a {
-			text-decoration: none;
-		}
-		a:visited {
-			color: black;
-		}
-	</style>
+	<link rel="stylesheet" href="/css/master.css" media="screen" title="no title" charset="utf-8">
 </head>
 <body>
 	<div class="container1">
 	    <div class="vertical-center-row">
-	        <a href="#"><img class="centered" id="cookie" src="cookie.png" alt="" title="Welcome!" ></img></a>
+	        <a href="#"><img class="centered" id="avatar" src="images/cookie-monster.png" alt="" title="Welcome!" ></img></a>
 					<a href="#"><h1 id="welcome">Welcome!</h1></a>
-					<img src="cookie-cokkie.png" alt="" class="cookie centered hidden" />
+					<!-- <img src="images/cookie.png" alt="" class="cookie centered hidden" /> -->
 	    </div>
 	</div>
 </body>
 <script src="https://code.jquery.com/jquery-2.1.4.min.js" charset="utf-8"></script>
+<script src="js/arrays.js" charset="utf-8"></script>
 <script type="text/javascript">
+	$(function() {
+		$('#avatar').on('click', function() {
+			// change facet
+			// var cookie = $('.cookie');
+			// cookie.css('visibility', cookie.css('visibility') == 'hidden' ? 'visible' : 'hidden');
+			state.facet = facets.cycleNext(state.facet);
+			updateFacet.call(this);
+		});
+		$('#welcome').on('click', function () {
+			// change language
+			state.language = languages.cycleNext(state.language);
+			updateLanguage();
+		});
+	});
+
+	var facets = [
+		{
+			name: "cook",
+			avatarPath: "images/cookie-monster.png"
+		},
+		{
+			name: "code",
+			avatarPath: "images/code.png"
+		}
+	];
+
 	var languages = [
 		{
 			name: "english",
-			welcomeMessage: "Wecome!"
+			welcomeMessage: "Welcome!"
 		},
 		{
 			name: "spanish",
@@ -60,32 +55,12 @@
 		}];
 
 	var state = {
+		facet: facets[0],
 		language: languages[0]
 	};
 
-	$(function() {
-		$('#cookie').on('click', function() {
-			// change side
-			var cookie = $('.cookie');
-			cookie.css('visibility', cookie.css('visibility') == 'hidden' ? 'visible' : 'hidden');
-		});
-		$('#welcome').on('click', function () {
-			// change language
-			state.language = nextLanguage(state.language);
-
-			updateLanguage();
-		});
-	});
-
-	function nextLanguage(current) {
-		var name = current.name;
-		if (name == "english") {
-			return languages[1];
-		} else if (name == "spanish") {
-			return languages[2];
-		} else if (name == "french") {
-			return languages[0];
-		}
+	function updateFacet() {
+		$('#avatar').attr("src", state.facet.avatarPath);
 	}
 
 	function updateLanguage() {
