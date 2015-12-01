@@ -7,13 +7,20 @@
 	    <div class="vertical-center-row">
 	        <a href="#"><img class="centered" id="avatar" src="images/cookie-monster.png" alt="" title="Welcome!" ></img></a>
 					<a href="#"><h1 id="welcome">Welcome!</h1></a>
-					<!-- <img src="images/cookie.png" alt="" class="cookie centered hidden" /> -->
+					<div id="content"></div>
 	    </div>
 	</div>
 </body>
 <script src="https://code.jquery.com/jquery-2.1.4.min.js" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js" charset="utf-8"></script>
 <script src="js/arrays.js" charset="utf-8"></script>
+<script src="js/model.js" charset="utf-8"></script>
 <script type="text/javascript">
+	var state = {
+		facet: facets[0],
+		language: languages[0]
+	};
+
 	$(function() {
 		$('#avatar').on('click', function() {
 			// change facet
@@ -29,38 +36,11 @@
 		});
 	});
 
-	var facets = [
-		{
-			name: "cook",
-			avatarPath: "images/cookie-monster.png"
-		},
-		{
-			name: "code",
-			avatarPath: "images/code.png"
-		}
-	];
-
-	var languages = [
-		{
-			name: "english",
-			welcomeMessage: "Welcome!"
-		},
-		{
-			name: "spanish",
-			welcomeMessage: "¡Bienvenido!"
-		},
-		{
-			name: "french",
-			welcomeMessage: "Bienvenue !"
-		}];
-
-	var state = {
-		facet: facets[0],
-		language: languages[0]
-	};
-
 	function updateFacet() {
-		$('#avatar').attr("src", state.facet.avatarPath);
+		var facet = state.facet;
+		$('#avatar').attr("src", facet.avatarPath);
+		$('body').css(facet.bodyCss);
+		facet.updateContent.call(this);
 	}
 
 	function updateLanguage() {

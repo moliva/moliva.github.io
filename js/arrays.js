@@ -1,4 +1,4 @@
-Array.prototype.cycleNext = function (value) {
+Array.prototype.cycleNext = function(value) {
   var index = this.indexOf(value);
   return this[this.length == index + 1 ? 0 : index + 1];
 }
