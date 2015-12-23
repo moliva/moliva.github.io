@@ -1,37 +1,50 @@
 var facets = [
   {
     name: "cook",
-    avatarPath: "images/cookie-monster.png",
+    avatarPath: "/images/cookie-monster.png",
     bodyCss: {background: "white"},
     updateContent: function() {
-      $('#content').html('');
+      // nothing here
+    },
+    hideContent: function() {
+      // nothing here
     }
   },
   {
     name: "code",
-    avatarPath: "images/code.png",
+    avatarPath: "/images/code.png",
     bodyCss: {background: "#DCDCDC"},
     updateContent: function() {
-      var content = $('#content');
-      content
-        .hide()
+      $('#welcome').addClass('code');
+      $('#content')
         .html('<ul class="skill-table">' +
           _.reduce(_.shuffle(skills), function(items, skill) {
-            return items + `<li class="${nextSkillClass()}">${skill}</li>`;
+            return items + `<li class="code ${nextSkillClass()}">${skill}</li>`;
           }, '') +
           '</ul>')
-        .append('<div id="connect-on">' +
+        .append('<div id="connect-on" class="footer">' +
           _.reduce(socialNetworks, function(html, socialNetwork) {
             return html + `<a target="_blank" alt=${socialNetwork.name} title="${socialNetwork.name}" href="${socialNetwork.url}"><img src="${socialNetwork.img}"></img></a>`;
           }, '') +
           '</div>')
         .fadeIn(1000);
+    },
+    hideContent: function() {
+      $('#welcome').removeClass('code');
+      $('#content').html('');
     }
   },
-  // {
-  // 	name: "hiking",
-  // 	avatarPath: "images/code.png"
-  // },
+  {
+    name: "hiking",
+    avatarPath: "/images/yeti.png",
+    bodyCss: {background: '#A92415'},
+    updateContent: function() {
+      $('#avatar').hover(function() {
+        
+      });
+    },
+    hideContent: function() {}
+  },
   // {
   // 	name: "music",
   // 	avatarPath: "images/code.png"
@@ -75,4 +88,4 @@ var socialNetworks = [
 ];
 var skills = ['General Programming', 'Web Development', 'Java', 'Scala', 'Javascript', 'Big Data', 'Spark', 'CSS', 'Node.js', 'OSGI', 'Eclipse', 'Object Oriented Design', 'XP', 'Maven', 'Clojure', 'Design Patterns', 'Smalltalk', 'DBMS', 'Git',
   'TDD', 'Scrum', 'Continuous Delivery', 'Functional Programming', 'MongoDB', 'Machine Learning', 'SQL', 'ORM', 'ClojureScript', 'Gradle', 'Gulp', 'Angular JS', 'Reagent', 'Rails', 'MapReduce', 'BDD', 'Express', 'Bootstrap', 'Octave', 'API',
-  'Stream Processing', 'CEP', 'Drools', 'Storm', 'Haskell', 'Monadic Programming', 'Buzzwords', 'Mule', 'VIm', 'Bash', 'Buzzwords everywhere!', 'jQuery'];
+  'Stream Processing', 'CEP', 'Drools', 'Storm', 'Haskell', 'Monadic Programming', 'Buzzwords', 'Mule', 'VIm', 'Bash', 'Buzzwords everywhere!', 'jQuery', 'nginx', 'SSH', 'ZSH', 'Grunt'];

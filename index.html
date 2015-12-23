@@ -6,8 +6,8 @@
 	<div class="container1">
 	    <div class="vertical-center-row">
 	        <a href="#"><img class="centered" id="avatar" src="images/cookie-monster.png" alt="" title="Welcome!" ></img></a>
-					<a href="#"><h1 id="welcome">Welcome!</h1></a>
-					<div id="content"></div>
+		<a href="#"><h1 id="welcome">Welcome!</h1></a>
+		<div id="content"></div>
 	    </div>
 	</div>
 </body>
@@ -26,8 +26,9 @@
 			// change facet
 			// var cookie = $('.cookie');
 			// cookie.css('visibility', cookie.css('visibility') == 'hidden' ? 'visible' : 'hidden');
+			var oldFacet = state.facet;
 			state.facet = facets.cycleNext(state.facet);
-			updateFacet.call(this);
+			updateFacet.call(this, oldFacet, state.facet);
 		});
 		$('#welcome').on('click', function () {
 			// change language
@@ -36,8 +37,8 @@
 		});
 	});
 
-	function updateFacet() {
-		var facet = state.facet;
+	function updateFacet(oldFacet, facet) {
+		oldFacet.hideContent.call(this)
 		$('#avatar').attr("src", facet.avatarPath);
 		$('body').css(facet.bodyCss);
 		facet.updateContent.call(this);

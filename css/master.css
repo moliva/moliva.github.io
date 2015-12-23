@@ -31,12 +31,18 @@ a:visited {
     font-family: monofur;
     src: url(/fonts/monofur-bold.ttf);
 }
+@font-face {
+    font-family: sans-bullshit-sans;
+    src: url(/fonts/sans-bullshit-sans.ttf);
+}
+.code {
+  font-family: monofur, courier, "courier new";
+}
 .skill1, .skill2, .skill3 {
   list-style-type: none;
   display: inline-block;
   padding: 4px;
   text-transform: lowercase;
-  font-family: monofur;
   flex-grow: 1;
   border-style: solid;
   border-color: #cdcdcd;
@@ -60,16 +66,18 @@ a:visited {
   display: flex;
   flex-wrap: wrap;
 }
-#connect-on {
+.footer {
   display: block;
-  text-align: right;
-  height: 30px;
   position: fixed;
-  padding: 4px 0 4px 0;
+  width: 100%;
   bottom: 0;
   left: 0;
+}
+#connect-on {
+  text-align: right;
+  height: 30px;
+  padding: 4px 0 4px 0;
   background: linear-gradient(grey, #bfbfbf);
-  width: 100%;
 }
 #connect-on img {
   height: 100%;
@@ -80,4 +88,10 @@ a:visited {
 }
 body {
   margin-bottom: 30px;
+}
+#avatar {
+  max-width: 250px;
+}
+.mega-size {
+  width: 50px;
 }
