@@ -93,5 +93,15 @@ body {
   max-width: 250px;
 }
 .mega-size {
-  width: 50px;
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  filter: FlipH;
+  -ms-filter: "FlipH";
+}
+.hiking {
+  color: white;
+  font-family: "Helvetica Neue";
+  text-shadow: -2px 2px 1px #0E4EAC, 2px 2px 1px #0E4EAC, 2px -2px 1px #0E4EAC, -2px -2px 1px #0E4EAC;
 }

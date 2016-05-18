@@ -39,11 +39,20 @@ var facets = [
     avatarPath: "/images/yeti.png",
     bodyCss: {background: '#A92415'},
     updateContent: function() {
-      $('#avatar').hover(function() {
-        
+      $('#welcome').addClass('hiking');
+      $('#avatar')
+      //   .mouseenter(function(event) {
+      //     $(event.target).addClass('mega-size');
+      // }).mouseleave(function(event) {
+      //     $(event.target).removeClass('mega-size');
+      // });
+        .contextmenu(function(event) {
+          event.preventDefault();
       });
     },
-    hideContent: function() {}
+    hideContent: function() {
+      $('#welcome').removeClass('hiking');
+    }
   },
   // {
   // 	name: "music",

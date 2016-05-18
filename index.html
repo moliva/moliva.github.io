@@ -37,11 +37,11 @@
 		});
 	});
 
-	function updateFacet(oldFacet, facet) {
-		oldFacet.hideContent.call(this)
-		$('#avatar').attr("src", facet.avatarPath);
-		$('body').css(facet.bodyCss);
-		facet.updateContent.call(this);
+	function updateFacet(oldFacet, newFacet) {
+		oldFacet.hideContent.call(this);
+		$('#avatar').attr("src", newFacet.avatarPath);
+		$('body').css(newFacet.bodyCss);
+		newFacet.updateContent.call(this);
 	}
 
 	function updateLanguage() {
